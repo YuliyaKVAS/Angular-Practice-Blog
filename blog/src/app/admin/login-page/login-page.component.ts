@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 import { User } from '../../shared/interfaces';
 import { AuthService } from '../shared/services/auth.service';
@@ -15,12 +15,25 @@ export class LoginPageComponent implements OnInit {
 
   form: FormGroup;
   submitted = false;
+  loginAgainMessage: string;
+
   constructor(
     public auth: AuthService,
     private router: Router,
+    private currentRoute: ActivatedRoute,
   ) { }
 
   ngOnInit() {
+    // process query params loginAgain
+
+    this.currentRoute.queryParams.subscribe((params: Params) => {
+      if(params['loginAgain']) {
+        this.loginAgainMessage = 'Please, login again';
+      } else if(params['authFailed']) {
+        this.loginAgainMessage = 'Session is expired. Please, try again'
+      }
+    });
+
     this.form = new FormGroup({
       email: new FormControl(null,
         [Validators.required, Validators.email

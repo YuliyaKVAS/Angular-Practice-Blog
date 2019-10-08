@@ -11,6 +11,12 @@
     {{error}}
   </div>
 
+  <div class="alert"
+       *ngIf="loginAgainMessage"
+  >
+    {{loginAgainMessage}}
+  </div>
+
   <div
     class="form-control"
     [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}"
