@@ -1,0 +1,35 @@
+<div class="form-control">
+    <label for="searchGit">Search user:</label>
+    <input
+      id="searchGit"
+      type="text"
+      placeholder="Search..."
+      [formControl]="searchQuery"
+    >
+<div *ngIf="users.length && !isLoading; else message">
+  <div class="card flex" *ngFor="let user of users">
+    <div class="box">
+      <img
+        alt="User avatar"
+        class="avatar"
+        [src]="user.avatar_url"
+      >
+    </div>
+    <div class="box">
+      <span><b>{{user.login}}</b></span>
+      <button class="btn btn-link">
+        <a
+          [href]="user.html_url"
+          target="_blank"
+        >
+          See on GitHub
+        </a>
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+
+<ng-template #message>
+  <h2 class="text-center">Start to search someone!</h2>
+</ng-template>

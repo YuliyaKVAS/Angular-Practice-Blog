@@ -13,6 +13,7 @@ import { AuthGuard } from "./shared/services/auth.guard";
 import { SearchPipe } from "./shared/search.pipe";
 import { AlertComponent } from './shared/components/alert/alert.component';
 import { AlertService } from "./shared/services/alert.service";
+import { GithubSearchPageComponent } from './github-search-page/github-search-page.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AlertService } from "./shared/services/alert.service";
     EditPageComponent,
     SearchPipe,
     AlertComponent,
+    GithubSearchPageComponent,
   ],
   imports: [
     CommonModule,
@@ -56,6 +58,11 @@ import { AlertService } from "./shared/services/alert.service";
           {
             path: 'post/:id/edit',
             component: EditPageComponent,
+            canActivate: [AuthGuard]
+          },
+          {
+            path: 'search',
+            component: GithubSearchPageComponent,
             canActivate: [AuthGuard]
           }
         ]

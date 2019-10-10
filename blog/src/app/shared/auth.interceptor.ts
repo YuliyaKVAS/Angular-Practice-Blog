@@ -26,9 +26,9 @@ export class AuthInterceptor implements HttpInterceptor{
     }
     return next.handle(req)
       .pipe(
-        tap(() => console.log('Intercept')),
+        // tap(() => console.log('Intercept')),
         catchError((error: HttpErrorResponse) => {
-          console.log('interceptorError', error);
+          // console.log('interceptorError', error);
           if(error.status === 401) {
             this.auth.logout(); // to remove all values on FE
             this.router.navigate(['/admin', 'login'], {

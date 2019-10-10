@@ -15,6 +15,9 @@
     <li>
       <a href="#" (click)="logout($event)">Log out</a>
     </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['/admin', 'search']">Github search</a>
+    </li>
   </ul>
 </nav>
 
