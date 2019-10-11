@@ -69,4 +69,9 @@ describe('test DashboardPageComponent', () => {
       expect(postSpy).toHaveBeenCalled();
       expect(deleteSpy).toHaveBeenCalled();
     });
+
+    it('should set sortDirection on sortPosts call', () => {
+      const event = new Event('change');
+      component.sortPosts(event)
+    })
   });

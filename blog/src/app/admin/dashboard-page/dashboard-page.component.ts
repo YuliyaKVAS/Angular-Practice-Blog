@@ -16,6 +16,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   postsSubscription: Subscription;
   deleteSubscription: Subscription;
   searchPost = '';
+  sortDirection = '';
 
   constructor(
     private postService: PostService,
@@ -36,7 +37,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     if(this.postsSubscription) {
       this.postsSubscription.unsubscribe(); // to avoid memory leak
     }
@@ -44,5 +45,11 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     if(this.deleteSubscription) {
       this.deleteSubscription.unsubscribe(); // to avoid memory leak
     }
+  }
+
+  sortPosts(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+
+    this.sortDirection = target.value;
   }
 }
