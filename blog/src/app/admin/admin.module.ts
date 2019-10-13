@@ -14,7 +14,6 @@ import { SearchPipe } from "./shared/search.pipe";
 import { AlertComponent } from './shared/components/alert/alert.component';
 import { AlertService } from "./shared/services/alert.service";
 import { GithubSearchPageComponent } from './github-search-page/github-search-page.component';
-import { DrawPanelComponent } from './draw-panel/draw-panel.component';
 import {SortPipe} from "./shared/sort.pipe";
 
 @NgModule({
@@ -28,7 +27,6 @@ import {SortPipe} from "./shared/sort.pipe";
     SortPipe,
     AlertComponent,
     GithubSearchPageComponent,
-    DrawPanelComponent,
   ],
   imports: [
     CommonModule,
